@@ -76,6 +76,7 @@ namespace MetricsCollector
             RunShellCommand($"metrics.exe /p:{projPath} /o:{TempXmlPath}");
         }
 
+        // TODO Fix flaky behaviour
         private static bool CheckoutRepoOnDate(string repo, string branch, DateTime dateTime)
         {
             var formattedDateTime = dateTime.ToString("yyyy-MM-dd HH:mm");

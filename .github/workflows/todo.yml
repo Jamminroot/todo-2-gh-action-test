@@ -1,0 +1,22 @@
+name: TODO Actions
+on: ["push"]
+jobs:
+  build:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@master"
+      - name: "TODO-2-GH-Issue"
+        uses: "jamminroot/todo-2-gh-issue@master"
+        with:
+          REPO: ${{ github.repository }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TODO: "TODO"
+          COMMENT: "\\/\\/"
+          LABEL: "TODO"
+          TRIM: ",: ()\""
+          SYNTAX: "csharp"
+          TIMEOUT: 500
+          MAXSNIPPETLINES: 7
+        id: "todo"

@@ -51,7 +51,8 @@ namespace MetricsCollector
             }
             return metrics;
         }
-
+        
+        // TODO Remove default param
         private static string RunShellCommand(string command, string path = "")
         {
             Process process = new Process();

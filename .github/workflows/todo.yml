@@ -8,15 +8,14 @@ jobs:
       - name: "TODO-2-GH-Issue"
         uses: "jamminroot/todo-2-gh-issue@develop"
         with:
-          BASE_SHA: ${{ github.event.before }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TODO: "TODO"
           COMMENT_PATTERN: "\\/\\/"
-          GH_LABEL: "Custom label :t-rex:"
+          GH_LABEL: "Custom shared label :t-rex:"
           TRIM: ",: \""
           TIMEOUT: 500
           LINES_BEFORE: 3
-          LINES_AFTER: 10
+          LINES_AFTER: 5
           LABELS_PATTERN: "(?<=\\[).+?(?=\\])"
           LABELS_REPLACE_PATTERN: "\\[(.+?)\\]"
         id: "todo"

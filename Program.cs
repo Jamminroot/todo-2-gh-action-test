@@ -99,6 +99,8 @@ namespace MetricsCollector
             return files.FirstOrDefault(f => f.EndsWith(".csproj"));
         }
 
+
+        // TODO Fix name of method GatherRepoMetrics [Refactor] [Hot :t-rex:]
         private static RepositoryMetrics GatherRepoMetrics(TrackedRepo repo)
         {
             if (!Directory.Exists(repo.Path))

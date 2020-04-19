@@ -70,7 +70,7 @@ namespace MetricsCollector
             return process.ExitCode == 0 ? output : "";
         }
 
-        // TODO Add unit test for method PrpepareMetricsXml
+        // TODO Add unit test for method PrepareMetricsXml
         private static void PrepareMetricsXml(string projPath)
         {
             RunShellCommand($"metrics.exe /p:{projPath} /o:{TempXmlPath}");

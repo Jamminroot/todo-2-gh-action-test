@@ -52,7 +52,7 @@ namespace MetricsCollector
             return metrics;
         }
         
-        // TODO Add actual default value
+        // TODO Add actual default value [Easy]
         private static string RunShellCommand(string command, string path = "")
         {
             Process process = new Process();
@@ -70,13 +70,13 @@ namespace MetricsCollector
             return process.ExitCode == 0 ? output : "";
         }
 
-        // TODO Add unit test for method PrepareMetricsXml
+        // TODO [Question] Add unit test for method PrepareMetricsXml
         private static void PrepareMetricsXml(string projPath)
         {
             RunShellCommand($"metrics.exe /p:{projPath} /o:{TempXmlPath}");
         }
 
-        // TODO Fix flaky behaviour
+        // TODO Fix flaky behaviour [Urgent] [Easy]
         private static bool CheckoutRepoOnDate(string repo, string branch, DateTime dateTime)
         {
             var formattedDateTime = dateTime.ToString("yyyy-MM-dd HH:mm");

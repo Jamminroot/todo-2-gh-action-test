@@ -17,6 +17,6 @@ jobs:
           TIMEOUT: 500
           LINES_BEFORE: 3
           LINES_AFTER: 10
-          LABELS_PATTERN: "(?<=\[).+?(?=\])"
-          LABELS_REPLACE_PATTERN: "\[(.+?)\]"
+          LABELS_PATTERN: "(?<=\\[).+?(?=\\])"
+          LABELS_REPLACE_PATTERN: "\\[(.+?)\\]"
         id: "todo"

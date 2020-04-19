@@ -52,7 +52,7 @@ namespace MetricsCollector
             return metrics;
         }
         
-        // TODO Remove default param
+        // TODO Add actual default value
         private static string RunShellCommand(string command, string path = "")
         {
             Process process = new Process();

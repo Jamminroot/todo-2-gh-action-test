@@ -8,9 +8,9 @@ jobs:
       - name: "TODO-2-GH-Issue"
         uses: "jamminroot/todo-2-gh-issue@master"
         with:
-          REPO: ${{ github.repository }}
-          BEFORE: ${{ github.event.before }}
-          SHA: ${{ github.sha }}
+          REPOSITORY: ${{ github.repository }}
+          OLD: ${{ github.event.before }}
+          NEW: ${{ github.sha }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TODO: "TODO"
           COMMENT: "\\/\\/"

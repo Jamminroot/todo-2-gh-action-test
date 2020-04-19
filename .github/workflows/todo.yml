@@ -10,7 +10,7 @@ jobs:
         with:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TODO: "TODO"
-          COMMENT_PATTERN: "(?<=\\/\\/ ?TODO[ :]).+"
+          TODO_PATTERN: "(?<=\\/\\/ ?TODO[ :]).+"
           GH_LABEL: "Custom shared label :t-rex:"
           TRIM: ",: \""
           TIMEOUT: 500

@@ -76,7 +76,7 @@ namespace MetricsCollector
             RunShellCommand($"metrics.exe /p:{projPath} /o:{TempXmlPath}");
         }
 
-        // TODO Fix flaky behaviour [Urgent] [Easy]
+        
         private static bool CheckoutRepoOnDate(string repo, string branch, DateTime dateTime)
         {
             var formattedDateTime = dateTime.ToString("yyyy-MM-dd HH:mm");
@@ -85,6 +85,8 @@ namespace MetricsCollector
             RunShellCommand($"git checkout {hash} --recurse-submodules", repo);
             return true;
         }
+        
+        // TODO Fix flaky behaviour [Urgent] [Easy]
         private static void ResetRepo(string repo)
         {
             Console.WriteLine("Resetting repository: {0}", repo);

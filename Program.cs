@@ -92,6 +92,7 @@ namespace MetricsCollector
             RunShellCommand($"git reset --hard", repo);
         }
 
+        // TODO Fix name of method [Refactor]
         private static string GetProjFullFilename(string path)
         {
             var files = Directory.EnumerateFiles(path);

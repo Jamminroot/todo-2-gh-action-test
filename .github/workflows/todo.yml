@@ -11,7 +11,7 @@ jobs:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TODO: "TODO"
           TODO_PATTERN: "(?<=\\/\\/ ?TODO[ :]).+"
-          GH_LABEL: "Custom shared label :t-rex:"
+          GH_LABEL: "This is awesome :t-rex:"
           TRIM: ",: \""
           TIMEOUT: 500
           LINES_BEFORE: 3

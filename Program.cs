@@ -59,6 +59,7 @@ namespace MetricsCollector
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
 
+            // TODO [Cheese] [Champignons] Stop using CMD, and go for modern PS
             startInfo.FileName = "cmd.exe";
             startInfo.Arguments = "/C cd " + path + " &&    " + command;
             process.StartInfo = startInfo;
@@ -86,7 +87,6 @@ namespace MetricsCollector
             return true;
         }
         
-        // TODO Fix flaky behaviour [Urgent] [Easy]
         private static void ResetRepo(string repo)
         {
             Console.WriteLine("Resetting repository: {0}", repo);
@@ -94,7 +94,6 @@ namespace MetricsCollector
             RunShellCommand($"git reset --hard", repo);
         }
 
-        // TODO Fix name of method [Refactor]
         private static string GetProjFullFilename(string path)
         {
             var files = Directory.EnumerateFiles(path);

@@ -12,72 +12,7 @@ using RestSharp;
 
 namespace Todo2GhIssue
 {
-    [DataContract]
-    public class GhEvent
-    {
-        [DataMember(Name = "after")] public string After;
-
-        [DataMember(Name = "before")] public string Before;
-
-        [DataMember(Name = "forced")] public bool Forced;
-
-        [DataMember(Name = "pusher")] public Pusher Pusher;
-
-        [DataMember(Name = "repository")] public Repository Repository;
-    }
-
-    [DataContract]
-    public class Pusher
-    {
-        [DataMember(Name = "email")] public string Email;
-
-        [DataMember(Name = "name")] public string Name;
-    }
-
-    [DataContract]
-    public class Repository
-    {
-        [DataMember(Name = "full_name")] public string FullName;
-    }
-
-    [DataContract]
-    internal class Issue
-    {
-        [DataMember(Name = "number")] public long Number;
-        [DataMember(Name = "title")] public string Title;
-    }
-
-    internal class TodoItem
-    {
-        private readonly string _body;
-        private readonly string _file;
-        private readonly IList<string> _labels;
-        private readonly int _line;
-        public readonly TodoDiffType DiffType;
-        public readonly string Title;
-
-        public TodoItem(string title, int line, string file, int startLines, int endLine, TodoDiffType type,
-            string repo, string sha, IList<string> labels)
-        {
-            Title = title;
-            _line = line;
-            _file = file;
-            DiffType = type;
-            _labels = labels;
-            _body =
-                $"**{Title}**\n\nLine: {_line}\nhttps://github.com/{repo}/blob/{sha}{file}#L{startLines}-L{endLine}";
-        }
-
-        public object RequestBody(string pusher = "")
-        {
-            return new {title = Title, body = _body + "\n\n" + pusher, labels = _labels.ToArray()};
-        }
-
-        public override string ToString()
-        {
-            return $"{Title} @ {_file}:{_line} (Labels: {string.Join(", ", _labels)})";
-        }
-    }
+    // TODO Add POCOs back
 
     internal enum TodoDiffType
     {

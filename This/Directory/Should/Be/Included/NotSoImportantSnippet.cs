@@ -87,6 +87,8 @@ namespace Todo2GhIssue
     }
 
 
+    // TODO Stop using todos for WI, this is likely a bad practice
+
     internal static class Program
     {
         private const string ApiBase = @"https://api.github.com/repos/";

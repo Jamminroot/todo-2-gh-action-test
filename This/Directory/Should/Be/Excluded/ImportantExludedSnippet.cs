@@ -291,7 +291,8 @@ namespace Todo2GhIssue
                 parameters.NoGithubEventData = true;
                 var eventData = File.ReadAllText(parameters.GithubEventPath);
                 var ser = new DataContractJsonSerializer(typeof(GhEvent));
-                using var sr = new MemoryStream(Encoding.UTF8.GetBytes(eventData));
+                // TODO Idk, editor is red
+                
                 var githubEvent = (GhEvent) ser.ReadObject(sr);
                 parameters.OldSha = githubEvent.Before;
                 parameters.NewSha = githubEvent.After;
@@ -311,9 +312,8 @@ namespace Todo2GhIssue
             parameters.GithubToken = Environment.GetEnvironmentVariable("INPUT_TOKEN");
             parameters.TodoRegex = Environment.GetEnvironmentVariable("INPUT_TODO_PATTERN") ?? @"\/\/ TODO";
             parameters.IgnoredRegex = Environment.GetEnvironmentVariable("INPUT_IGNORE_PATH_PATTERN");
-            parameters.InlineLabelRegex = Environment.GetEnvironmentVariable("INPUT_LABELS_PATTERN");
-            parameters.InlineLabelReplaceRegex = Environment.GetEnvironmentVariable("INPUT_LABELS_REPLACE_PATTERN");
-            parameters.LabelToAdd = Environment.GetEnvironmentVariable("INPUT_GH_LABEL");
+            // TODO Add removed code back
+
             parameters.TrimmedCharacters = Environment.GetEnvironmentVariable("INPUT_TRIM")?.ToCharArray();
 
             if (!bool.TryParse(Environment.GetEnvironmentVariable("INPUT_NOPUBLISH"), out parameters.NoPublish))
@@ -347,20 +347,7 @@ namespace Todo2GhIssue
             if (!string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("INPUT_EXCLUDED_PATHS")))
                 parameters.ExcludedPaths = Environment.GetEnvironmentVariable("INPUT_EXCLUDED_PATHS")
                     ?.Split('|', StringSplitOptions.RemoveEmptyEntries);
-            return parameters;
-        }
-
-        private static void PrintParameters(Parameters parameters)
-        {
-            Console.WriteLine("Repository:\t{0}", parameters.Repository);
-            Console.WriteLine("Old SHA:\t{0}", parameters.OldSha);
-            Console.WriteLine("New SHA:\t{0}", parameters.NewSha);
-            Console.WriteLine("Token:\t{0}",
-                parameters.GithubToken?[0] +
-                string.Join("", Enumerable.Repeat('*', parameters.GithubToken?.Length ?? 0 - 2)) +
-                parameters.GithubToken?[^1]);
-            Console.WriteLine("TODO regular expression:\t{0}", parameters.TodoRegex);
-            Console.WriteLine("Ignore path regular expression:\t{0}", parameters.IgnoredRegex);
+            return parah regular expression:\t{0}", parameters.IgnoredRegex);
             Console.WriteLine("Inline label regular expression:\t{0}", parameters.InlineLabelRegex);
             Console.WriteLine("Inline label replace regular expression:\t{0}", parameters.InlineLabelReplaceRegex);
             Console.WriteLine("GH Label:\t{0}", parameters.LabelToAdd);
@@ -381,26 +368,14 @@ namespace Todo2GhIssue
                      || string.IsNullOrWhiteSpace(parameters.GithubToken));
         }
 
-        private static void PrintTodos(IList<TodoItem> todos)
-        {
-            Console.WriteLine("Parsed new TODOs:");
-            foreach (var todoItem in todos.Where(t => t.DiffType == TodoDiffType.Addition))
-                Console.WriteLine($"+\t{todoItem}");
-            Console.WriteLine("Parsed removed TODOs:");
-            foreach (var todoItem in todos.Where(t => t.DiffType == TodoDiffType.Deletion))
-                Console.WriteLine($"-\t{todoItem}");
-        }
+        private static void PrintTodos(
 
         private static void Main()
         {
             Console.WriteLine("Parsing parameters.");
             var parameters = ParseParameters();
             PrintParameters(parameters);
-            if (!CheckParameters(parameters))
-            {
-                Console.WriteLine("Failed to read some of the mandatory parameters. Aborting.");
-                Environment.Exit(1);
-            }
+           
 
             var diff = GetDiff(parameters);
             var todos = GetTodoItems(parameters, diff);

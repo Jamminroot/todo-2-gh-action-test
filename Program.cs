@@ -52,7 +52,6 @@ namespace MetricsCollector
             return metrics;
         }
         
-        // TODO Add actual default value [Easy]
         private static string RunShellCommand(string command, string path = "")
         {
             Process process = new Process();
